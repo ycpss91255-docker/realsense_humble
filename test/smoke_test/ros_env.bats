@@ -31,14 +31,60 @@ setup() {
     assert_success
 }
 
-# -------------------- Configuration --------------------
+# -------------------- Base tools --------------------
+
+@test "git is available" {
+    run git --version
+    assert_success
+}
+
+@test "vim is available" {
+    run vim --version
+    assert_success
+}
+
+@test "sudo is available" {
+    run sudo --version
+    assert_success
+}
+
+@test "sudo passwordless works" {
+    run sudo true
+    assert_success
+}
+
+# -------------------- System --------------------
+
+@test "User is not root" {
+    assert [ "$(id -u)" -ne 0 ]
+}
+
+@test "HOME is set and exists" {
+    assert [ -n "${HOME}" ]
+    assert [ -d "${HOME}" ]
+}
+
+@test "Timezone is Asia/Taipei" {
+    run cat /etc/timezone
+    assert_output "Asia/Taipei"
+}
+
+@test "LANG is en_US.UTF-8" {
+    assert_equal "${LANG}" "en_US.UTF-8"
+}
+
+@test "LC_ALL is en_US.UTF-8" {
+    assert_equal "${LC_ALL}" "en_US.UTF-8"
+}
+
+@test "entrypoint.sh exists and executable" {
+    assert [ -x "/entrypoint.sh" ]
+}
 
 @test "RealSense udev rules exist" {
     assert [ -f "/etc/udev/rules.d/99-realsense-libusb.rules" ]
 }
 
-# -------------------- System --------------------
-
-@test "entrypoint.sh exists and is executable" {
-    assert [ -x "/entrypoint.sh" ]
+@test "Work directory exists" {
+    assert [ -d "${HOME}/work" ]
 }
