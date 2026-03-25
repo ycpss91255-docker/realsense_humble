@@ -21,18 +21,13 @@ setup() {
 
 # -------------------- RealSense packages --------------------
 
-@test "realsense2_camera package is available" {
-    run bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash && ros2 pkg list | grep realsense2_camera"
+@test "realsense2_camera is installed" {
+    run dpkg -l ros-${ROS_DISTRO}-realsense2-camera
     assert_success
 }
 
-@test "realsense2_description package is available" {
-    run bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash && ros2 pkg list | grep realsense2_description"
-    assert_success
-}
-
-@test "librealsense2 library is installed" {
-    run dpkg -l | grep librealsense2
+@test "realsense2_description is installed" {
+    run dpkg -l ros-${ROS_DISTRO}-realsense2-description
     assert_success
 }
 

@@ -30,7 +30,6 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         sudo \
         tini \
-        ros-${ROS_DISTRO}-librealsense2* \
         ros-${ROS_DISTRO}-realsense2-camera \
         ros-${ROS_DISTRO}-realsense2-description \
     && \
