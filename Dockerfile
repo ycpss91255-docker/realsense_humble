@@ -130,6 +130,7 @@ COPY --chmod=0755 "./${ENTRYPOINT_FILE}" "/entrypoint.sh"
 COPY --chown="${USER}":"${GROUP}" --chmod=0755 "${CONFIG_SRC}" "${CONFIG_DIR}"
 
 # Copy RealSense udev rules
+RUN mkdir -p /etc/udev/rules.d
 COPY --chmod=0644 config/realsense/99-realsense-libusb.rules /etc/udev/rules.d/
 
 USER "${USER}"
@@ -209,6 +210,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Copy RealSense udev rules
+RUN mkdir -p /etc/udev/rules.d
 COPY --chmod=0644 config/realsense/99-realsense-libusb.rules /etc/udev/rules.d/
 
 COPY --chmod=0755 script/entrypoint.sh /entrypoint.sh
