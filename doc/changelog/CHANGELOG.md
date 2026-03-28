@@ -1,0 +1,37 @@
+**[English](CHANGELOG.md)** | **[繁體中文](CHANGELOG.zh-TW.md)** | **[简体中文](CHANGELOG.zh-CN.md)** | **[日本語](CHANGELOG.ja.md)**
+
+# Changelog
+
+Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### Fixed
+- revert display mount to XDG_RUNTIME_DIR:rw
+- use tmpfs for XDG_RUNTIME_DIR + Wayland socket mount
+
+## [v2.0.0] - 2026-03-28
+
+### Added
+- migrate from docker_setup_helper to docker_template
+- add Wayland display support for X11/Wayland dual compatibility
+
+### Changed
+- remove docker_setup_helper subtree and local CI workflows
+- upgrade to full env-level architecture
+- add docker_setup_helper subtree
+- Squashed 'docker_setup_helper/' content from commit 0141a19
+- upgrade to full multi-stage architecture
+
+### Fixed
+- create udev rules directory before COPY
+
+## [v1.0.0] - 2026-03-25
+
+### Added
+- initial realsense_humble repo
+
+### Fixed
+- remove wildcard apt install and use dpkg for smoke tests
+
