@@ -96,7 +96,7 @@ graph TD
 
     EXT3 --> runtime["runtime\nrealsense2_camera + librealsense2 + udev rules"]:::stage
 
-    bats-src --> test["test  ⚡ ephemeral\nsmoke tests, discarded after build"]:::ephemeral
+    bats-src --> test["test一時的\nスモークテスト、ビルド後に破棄"]:::ephemeral
     bats-ext --> test
     runtime --> test
 
